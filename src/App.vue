@@ -1,26 +1,30 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+       <h3>App组件</h3>
+       <p>count:{{count}}</p>
+       <p>double:{{double}}</p>
+       <button @click="add">+1</button>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import {ref,computed} from 'vue'
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  setup () {
+    let count=ref(0);
+    let double=computed(()=>count.value*2);
+    let add=()=>{
+      count.value++;
+    }
+    return {
+      count,
+      double,
+      add
+    }
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss" scoped>
+
 </style>
